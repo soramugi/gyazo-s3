@@ -1,28 +1,18 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :destroy]
 
   # GET /items
-  # GET /items.json
   def index
     @items = Item.all
   end
 
-  # GET /items/1
-  # GET /items/1.json
+  # GET /items/huge.img
   def show
-  end
-
-  # GET /items/new
-  def new
-    @item = Item.new
-  end
-
-  # GET /items/1/edit
-  def edit
+    data = open(@item.image.url)
+    send_data data.read, type: @item.image_content_type, disposition: 'inline'
   end
 
   # POST /items
-  # POST /items.json
   def create
     @item = Item.new(item_params)
 
@@ -37,8 +27,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
+  # DELETE /items/huge.img
   def destroy
     @item.destroy
     respond_to do |format|
@@ -48,9 +37,9 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      filename = "#{params[:name]}.#{params[:format].to_s}"
+      @item = Item.find_by_image_file_name(filename)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

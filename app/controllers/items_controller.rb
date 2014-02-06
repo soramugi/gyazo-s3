@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    p item_params
     @item = Item.new(item_params)
 
     respond_to do |format|
@@ -33,20 +32,6 @@ class ItemsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @item }
       else
         format.html { render action: 'new' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
-  def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end

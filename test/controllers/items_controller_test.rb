@@ -17,8 +17,10 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   test "should create item" do
+    AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET", :stub_requests => true)
+    @image = fixture_file_upload('/files/test.gif', 'image/gif')
     assert_difference('Item.count') do
-      post :create, item: {  }
+      post :create, item: { image: @image}
     end
 
     assert_redirected_to item_path(assigns(:item))
@@ -32,11 +34,6 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @item
     assert_response :success
-  end
-
-  test "should update item" do
-    patch :update, id: @item, item: {  }
-    assert_redirected_to item_path(assigns(:item))
   end
 
   test "should destroy item" do

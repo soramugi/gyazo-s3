@@ -15,25 +15,14 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    @item.save
+    redirect_to root_url
   end
 
   # DELETE /items/huge.img
   def destroy
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
-    end
+    redirect_to root_url
   end
 
   private

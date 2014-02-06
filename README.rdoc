@@ -1,5 +1,6 @@
 == GyazoS3
 
+sample http://glacial-everglades-5470.herokuapp.com
 
 delete
 

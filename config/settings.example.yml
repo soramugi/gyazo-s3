@@ -1,0 +1,14 @@
+defaults: &defaults
+  SECRET_KEY_BASE: SECRET_KEY_BASE
+  S3_BUCKET: S3_BUCKET
+  AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

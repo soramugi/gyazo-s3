@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 I18n.enforce_available_locales = false
+ENV.update YAML.load_file('config/settings.yml')[Rails.env] rescue {}
 
 module GyazoS3
   class Application < Rails::Application

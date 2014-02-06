@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GyazoS3</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= Rails.configuration.title %></title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div class="container">
+      <% if Rails.configuration.title != 'GyazoS3' %>
+        <h1><%= Rails.configuration.title %></h1>
+      <% end %>
 
-</body>
+      <div class"row">
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
 </html>

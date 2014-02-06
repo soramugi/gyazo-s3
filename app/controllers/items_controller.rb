@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
-    @item = Item.new(item_params)
-    @item.save
-    redirect_to root_url
+    item = Item.create_with_imagedata(params[:imagedata])
+    url = "#{request.protocol}#{request.host_with_port}/#{item.image_file_name}"
+    render text: url
   end
 
   # DELETE /items/huge.img
@@ -29,10 +29,5 @@ class ItemsController < ApplicationController
     def set_item
       filename = "#{params[:name]}.#{params[:format].to_s}"
       @item = Item.find_by_image_file_name(filename)
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:image)
     end
 end

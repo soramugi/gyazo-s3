@@ -3,4 +3,18 @@
 
 delete
 
-    curl -X DELETE -d "id=$(cat ~/Library/Gyazo/id)" http://localhost:3000/20131020031935f52.jpg 
+    curl -X DELETE -d "id=$(cat ~/Library/Gyazo/id)" http://localhost:3000/20131020031935f52.jpg
+
+=== heroku
+
+    heroku create
+    git push heroku master
+    heroku config:set SECRET_KEY_BASE=SECRET_KEY_BASE
+    heroku config:set S3_BUCKET=S3_BUCKET
+    heroku config:set AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
+    heroku config:set AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
+    heroku config:set GYAZO_ID=GYAZO_ID
+    heroku config:set TITLE=GyazoS3
+    heroku run rake db:migrate
+    heroku open
+

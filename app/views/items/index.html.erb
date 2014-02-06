@@ -12,9 +12,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= image_tag item.image.url %></td>
-        <td><%= link_to 'Show', item.image_file_name %></td>
-        <td><%= link_to 'Destroy', item.image_file_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag(item.image.url), item.image_file_name %></td>
       </tr>
     <% end %>
   </tbody>

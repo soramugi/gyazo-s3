@@ -1,19 +1,5 @@
 <h1>Listing items</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to image_tag(item.image.url), item.image_file_name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @items.each do |item| %>
+  <span><%= link_to image_tag(item.image.url), item.image_file_name %></span>
+<% end %>

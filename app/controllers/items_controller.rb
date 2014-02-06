@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate!,  only: [:create, :destroy]
   before_action :set_item, only: [:show, :destroy]
 
   # GET /items
@@ -22,12 +23,19 @@ class ItemsController < ApplicationController
   # DELETE /items/huge.img
   def destroy
     @item.destroy
-    redirect_to root_url
+    render text: 'destroy'
   end
 
   private
-    def set_item
-      filename = "#{params[:name]}.#{params[:format].to_s}"
-      @item = Item.find_by_image_file_name(filename)
+
+  def authenticate!
+    if Rails.configuration.gyazo_id && params[:id] != Rails.configuration.gyazo_id
+      raise 'ID is incorrect'
     end
+  end
+
+  def set_item
+    filename = "#{params[:name]}.#{params[:format].to_s}"
+    @item = Item.find_by_image_file_name(filename)
+  end
 end

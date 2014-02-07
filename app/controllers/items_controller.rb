@@ -36,5 +36,6 @@ class ItemsController < ApplicationController
   def set_item
     filename = "#{params[:name]}.#{params[:format].to_s}"
     @item = Item.find_by_image_file_name(filename)
+    raise 'not item' if @item.nil?
   end
 end

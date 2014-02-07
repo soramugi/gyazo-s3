@@ -1,6 +1,6 @@
 == GyazoS3
 
-sample http://glacial-everglades-5470.herokuapp.com
+sample http://pic.soramugi.net
 
 delete
 
@@ -24,7 +24,5 @@ delete
 
     vi /Applications/Gyazo.app/Contents/Resources/script
 
-```
-HOST = 'hugehgue.herokuapp.com'
-CGI = '/items'
-```
+    HOST = 'hugehgue.herokuapp.com'
+    CGI = '/items'

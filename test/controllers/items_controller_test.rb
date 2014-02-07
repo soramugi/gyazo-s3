@@ -11,36 +11,30 @@ class ItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:items)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create item" do
     AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET", :stub_requests => true)
     @image = fixture_file_upload('/files/test.gif', 'image/gif')
     assert_difference('Item.count') do
-      post :create, item: { image: @image}
+      post :create, item: { image: @image}, id: ENV['GYAZO_ID']
     end
 
-    assert_redirected_to item_path(assigns(:item))
-  end
-
-  test "should show item" do
-    get :show, id: @item
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @item
+  test "should show item" do
+    AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET", :stub_requests => true)
+    names = @item.image_file_name.split('.')
+    get :show, name: names.shift, format: names.shift
     assert_response :success
   end
 
   test "should destroy item" do
+    AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET", :stub_requests => true)
     assert_difference('Item.count', -1) do
-      delete :destroy, id: @item
+      names = @item.image_file_name.split('.')
+      delete :destroy, id: ENV['GYAZO_ID'], name: names.shift, format: names.shift
     end
 
-    assert_redirected_to items_path
+    assert_response :success
   end
 end

@@ -1,5 +1,5 @@
 #Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
-Paperclip::Attachment.default_options[:path] = '/images/:filename'
+Paperclip::Attachment.default_options[:path] = '/images/:styles/:filename'
 Paperclip::Attachment.default_options[:s3_host_name] = 's3-ap-northeast-1.amazonaws.com'
 Paperclip::Attachment.default_options[:storage] = :s3
 Paperclip::Attachment.default_options[:s3_protocol] = 'http'

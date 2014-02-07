@@ -1,7 +1,9 @@
 <div class="col-lg-12">
   <% @items.each do |item| %>
     <div class="col-md-3">
-      <%= link_to image_tag(item.image.url(:thumb)), item.image_file_name, { class: 'thumbnail'} %>
+      <a href="/<%= item.image_file_name %>">
+        <%= image_tag(item.image.url(:thumb), { class: 'img-thumbnail'}) %>
+      </a>
     </div>
   <% end %>
 </div>

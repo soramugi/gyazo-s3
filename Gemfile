@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
+gem 'kaminari'
 group :development, :test do
   gem 'sqlite3'
 end

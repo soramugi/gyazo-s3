@@ -2,12 +2,12 @@ class ItemsController < ApplicationController
   before_filter :authenticate!,  only: [:create, :destroy]
   before_action :set_item, only: [:show, :destroy]
 
-  # GET /items
+  # GET /
   def index
     @items = Item.all.page params[:page]
   end
 
-  # GET /items/huge.img
+  # GET /huge.img
   def show
     data = open(@item.image.url)
     send_data data.read, type: @item.image_content_type, disposition: 'inline'
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     render text: item.image.url
   end
 
-  # DELETE /items/huge.img
+  # DELETE /huge.img
   def destroy
     @item.destroy
     render text: 'destroy'

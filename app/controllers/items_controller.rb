@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    @items = Item.all.order('id desc')
   end
 
   # GET /items/huge.img

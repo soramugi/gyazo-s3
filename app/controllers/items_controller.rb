@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     item = Item.create_with_imagedata(params[:imagedata])
-    render text: "#{request.protocol}#{request.host_with_port}#{item.image_file_name}"
+    render text: "#{request.protocol}#{request.host_with_port}/#{item.image_file_name}"
   end
 
   # DELETE /huge.img

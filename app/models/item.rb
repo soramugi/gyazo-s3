@@ -7,7 +7,8 @@ class Item < ActiveRecord::Base
     if data.original_filename == 'gyazo.com'
       name = Time.now.to_i.to_s + '.png'
     else
-      name = data.original_filename
+      extname = File.extname(data.original_filename)
+      name = Time.now.to_i.to_s + extname
     end
     item = new
     item.image = data.tempfile

@@ -1,5 +1,5 @@
 <% @items.each do |item| %>
-  <div class="col-md-3">
+  <div class="item col-md-3">
     <a href="<%= item.image_file_name %>" class="thumbnail">
       <%= image_tag(item.image.url(:thumb)) %>
     </a>

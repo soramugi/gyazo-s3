@@ -9,8 +9,16 @@ class ItemsController < ApplicationController
 
   # GET /huge.img
   def show
-    data = open(@item.image.url)
-    send_data data.read, type: @item.image_content_type, disposition: 'inline'
+    url = @item.image.url
+    if url.include?('http')
+      # production s3
+      data = open(url)
+      send_data data.read, type: @item.image_content_type, disposition: 'inline'
+    else
+      # development,test local
+      url = Rails.root.join('public/' + url.gsub!(/\?.+/, ''))
+      send_file url, type: @item.image_content_type, disposition: 'inline'
+    end
   end
 
   # POST /items

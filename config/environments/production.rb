@@ -77,4 +77,13 @@ GyazoS3::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  Paperclip::Attachment.default_options[:path] = '/images/:styles/:filename'
+  Paperclip::Attachment.default_options[:s3_host_name] = 's3-ap-northeast-1.amazonaws.com'
+  Paperclip::Attachment.default_options[:storage] = :s3
+  Paperclip::Attachment.default_options[:s3_protocol] = 'http'
+  Paperclip::Attachment.default_options[:s3_credentials] =
+    { :bucket => ENV['S3_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'] }
 end

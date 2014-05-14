@@ -17,3 +17,7 @@
 /tmp
 
 /config/settings.yml
+
+# peparclip storage filesystem
+/public/system
+

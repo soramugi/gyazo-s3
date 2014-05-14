@@ -33,4 +33,7 @@ GyazoS3::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  Paperclip::Attachment.default_options[:storage] = :filesystem
+  Paperclip::Attachment.default_options[:path] = '/images/:styles/:filename'
 end

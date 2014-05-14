@@ -8,20 +8,20 @@ class ItemsControllerTest < ActionController::TestCase
       stub_requests:     true,
     )
     @item = items(:one)
-    file = File.new(Rails.root.join("test/fixtures/files/test.gif"))
+    file = File.new(Rails.root.join('test/fixtures/files/test.gif'))
     @item.update_attributes!(image: file)
   end
 
-  #test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:items)
-  #end
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:items)
+  end
 
   #test "should create item" do
-  #  @image = fixture_file_upload('/files/test.gif', 'image/gif')
+  #  image = fixture_file_upload('/files/test.gif', 'image/gif')
   #  assert_difference('Item.count') do
-  #    post :create, item: { image: @image}, id: ENV['GYAZO_ID']
+  #    post :create, imagedata: image
   #  end
 
   #  assert_response :success

@@ -16,8 +16,9 @@
 /log/*.log
 /tmp
 
+/coverage
+
 /config/settings.yml
 
 # peparclip storage filesystem
 /public/system
-

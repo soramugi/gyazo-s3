@@ -18,14 +18,17 @@ class ItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:items)
   end
 
-  #test "should create item" do
-  #  image = fixture_file_upload('/files/test.gif', 'image/gif')
-  #  assert_difference('Item.count') do
-  #    post :create, imagedata: image
-  #  end
+  test "should create item" do
+    image = fixture_file_upload('/files/test.gif', 'image/gif')
+    def image.tempfile
+      @tempfile
+    end
+    assert_difference('Item.count') do
+      post :create, imagedata: image
+    end
 
-  #  assert_response :success
-  #end
+    assert_response :success
+  end
 
   test "should show item" do
     names = @item.image_file_name.split('.')
@@ -33,12 +36,12 @@ class ItemsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  #test "should destroy item" do
-  #  assert_difference('Item.count', -1) do
-  #    names = @item.image_file_name.split('.')
-  #    delete :destroy, id: ENV['GYAZO_ID'], name: names.shift, format: names.shift
-  #  end
+  test "should destroy item" do
+    names = @item.image_file_name.split('.')
+    assert_difference('Item.count', -1) do
+      delete :destroy, name: names.shift, format: names.shift
+    end
 
-  #  assert_response :success
-  #end
+    assert_response :success
+  end
 end

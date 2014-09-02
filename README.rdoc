@@ -1,5 +1,5 @@
 == GyazoS3
-{<img src="https://travis-ci.org/soramugi/gyazo-s3.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/soramugi/gyazo-s3] {<img src="https://coveralls.io/repos/soramugi/gyazo-s3/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/soramugi/gyazo-s3] {<img src="https://coveralls.io/repos/soramugi/gyazo-s3/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/soramugi/gyazo-s3]
+{<img src="https://travis-ci.org/soramugi/gyazo-s3.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/soramugi/gyazo-s3] {<img src="https://coveralls.io/repos/soramugi/gyazo-s3/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/soramugi/gyazo-s3] {<img src="https://gemnasium.com/soramugi/gyazo-s3.svg" alt="Dependency Status" />}[https://gemnasium.com/soramugi/gyazo-s3]
 
 
 

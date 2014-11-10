@@ -16,8 +16,8 @@ class ItemsController < ApplicationController
       send_data data.read, type: @item.image_content_type, disposition: 'inline'
     else
       # development,test local
-      url = Rails.root.join('public/' + url.gsub!(/\?.+/, ''))
-      send_file url, type: @item.image_content_type, disposition: 'inline'
+      path = Rails.root.join('public/' + URI.unescape(url).gsub!(/\?.+/, ''))
+      send_file path, type: @item.image_content_type, disposition: 'inline'
     end
   end
 

@@ -34,6 +34,9 @@ GyazoS3::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  Paperclip::Attachment.default_options[:storage] = :filesystem
+  Paperclip::Attachment.default_options.update({
+    use_timestamp: false,
+    storage: :filesystem,
+  })
   config.gyazo_id = false
 end

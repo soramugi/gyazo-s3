@@ -27,5 +27,8 @@ GyazoS3::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  Paperclip::Attachment.default_options[:storage] = :filesystem
+  Paperclip::Attachment.default_options.update({
+    use_timestamp: false,
+    storage: :filesystem,
+  })
 end

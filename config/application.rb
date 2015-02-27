@@ -24,5 +24,6 @@ module GyazoS3
     config.title = ENV['TITLE'] || 'GyazoS3'
 
     config.gyazo_id = ENV['GYAZO_ID']
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

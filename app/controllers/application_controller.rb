@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
 
   rescue_from StandardError, with: :not_found
 
+  before_action :redirect_url
+
+  def redirect_url
+    if ENV['REDIRECT_URL'].present?
+      uri = URI(ENV['REDIRECT_URL'])
+      if request.host != uri.host
+        redirect_to ENV['REDIRECT_URL'] + request.path ,status: 301
+      end
+    end
+  end
+
   def not_found
     render status: 404, template: 'errors/not_found.html.erb'
   end

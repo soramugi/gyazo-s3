@@ -5,7 +5,6 @@ defaults: &defaults
   AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
   GYAZO_ID: GYAZO_ID
   TITLE: GyazoS3
-  REDIRECT_URL: 'http://example.com'
 
 development:
   <<: *defaults
